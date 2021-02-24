@@ -1,0 +1,15 @@
+GET http://localhost:8080/hello/block
+Accept: application/json
+###
+GET http://localhost:8081/hello/block
+Accept: application/json
+###
+GET http://localhost:8080/hello/suspend
+Accept: application/json
+###
+GET http://localhost:8081/hello/suspend
+Accept: application/json
+###
+GET http://localhost:8082/hello
+Accept: application/json
+###
