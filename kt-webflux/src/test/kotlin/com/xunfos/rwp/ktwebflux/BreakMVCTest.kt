@@ -15,15 +15,13 @@ class BreakMVCTest {
         val webClient: WebClient = WebClient.builder().baseUrl("http://localhost:8081/hello/suspend").build()
 
         runBlocking(Dispatchers.IO) {
-            withTimeout(5_000) {
-                // 3s to reply x 150 calls using 10 threads
-                repeat(150) {
-                    launch {
-                        webClient.get()
-                            .retrieve()
-                            .awaitBody<String>()
-                            .run { println(this) }
-                    }
+            // 3s to reply x 150 calls using 10 threads
+            repeat(150) {
+                launch {
+                    webClient.get()
+                        .retrieve()
+                        .awaitBody<String>()
+                        .run { println(this) }
                 }
             }
         }
